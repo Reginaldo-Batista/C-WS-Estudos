@@ -42,7 +42,7 @@ void pushPilha(pilha *pilha, int novoValor) {
 
 void popPilha(pilha *pilha) {
     if (pilha->topo == -1)
-        printf("Pilha vazia!");
+        printf("Pilha vazia!\n");
     else {
         pilha->vetor[pilha->topo] = 0;
         pilha->topo--;
@@ -55,19 +55,39 @@ int main() {
 
     constructPilha(&pilha);
 
-    printPilha(&pilha);
+    int escolha;
+    int novoValor;
+    while (escolha != 3) {
+        system("cls");
+        escolha = 0;
+        printf("Pilha atual: ");
+        printPilha(&pilha);
+        printf("\n\n[1]Push\n");
+        printf("[2]Pop\n");
+        printf("[3]Sair\n");
+        printf("Sua escolha: ");
+        scanf("%d", &escolha);
 
-    pushPilha(&pilha, 5);
-    pushPilha(&pilha, 2);
-    pushPilha(&pilha, 1);
-    pushPilha(&pilha, 3);
-    pushPilha(&pilha, 4);
+        switch (escolha) {
+            case 1:
+                printf("Insira o novo valor: ");
+                scanf("%d", &novoValor);
+                pushPilha(&pilha, novoValor);
+                break;
 
-    printPilha(&pilha);
+            case 2:
+                popPilha(&pilha);
+                break;
 
-    popPilha(&pilha);
+            case 3:
+                printf("Saindo...");
+                break;
 
-    printPilha(&pilha);
+            default:
+                printf("Comando invalido!\n");
+        }
+
+    }
     
     free(pilha.vetor);
 
