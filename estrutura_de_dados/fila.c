@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #define vazio 0
-#define tempTam 3
+#define tempTam 10
 
 typedef struct FilaCircular{
 
@@ -98,33 +98,48 @@ void printFilaCircular(const filaCircular *fila) {
             }
         }
         else
-            printf("Impressao invalida! Fila circular vazia!\n");
+            printf("Fila circular vazia!\n");
     }
     printf("\n");
 }
 int main() {
 
     filaCircular fila;
+    int loopMenu, valor;
 
     constructFilaCircular(&fila);
 
-    printFilaCircular(&fila);
-    
-    pop(&fila);
+    do {
+        system("cls");
+        printf("Fila:\n");
+        printFilaCircular(&fila);
 
-    push(&fila, 1);
-    push(&fila, 2);
-    push(&fila, 3);
+        printf("\nMenu:\n");
+        printf("1 - Inserir elemento\n");
+        printf("2 - Remover elemento\n");
+        printf("3 - Sair\n");
+        printf("\nSua escolha: ");
+        scanf("%d", &loopMenu);
 
-    printFilaCircular(&fila);
+        switch (loopMenu) {
+            case 1:
+                printf("Digite um numero inteiro: ");
+                scanf("%d", &valor);
+                push(&fila, valor);
+                break;
+            case 2:
+                pop(&fila);
+                break;
+            case 3:
+                printf("Saindo...\n");
+                break;
+            default:
+                printf("Opcao invalida!\n");
+        }
 
-    pop(&fila);
+    } while (loopMenu != 3);
 
-    printFilaCircular(&fila);
-
-    push(&fila, 4);
-
-    printFilaCircular(&fila);
+    free(fila.vetor);
 
     return 0;
 }
