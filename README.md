@@ -1,2 +1,2 @@
 # C-WS-Estudos
-Repositório com meus estudos em C
+Repositório com meus estudos e protótipos feitos na linguagem C
