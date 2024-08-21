@@ -123,8 +123,10 @@ int main() {
 
         switch (loopMenu) {
             case 1:
-                printf("Digite um numero inteiro: ");
-                scanf("%d", &valor);
+                do {
+                    printf("Digite um numero inteiro diferente de 0: ");
+                    scanf("%d", &valor);
+                } while (valor == vazio);
                 push(&fila, valor);
                 break;
             case 2:
