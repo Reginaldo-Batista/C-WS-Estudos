@@ -8,27 +8,31 @@ typedef struct Node {
 
 }node;
 
-void startInsertNode(node *inicio, int novoValor) {
+void InserirNodeInicio(node **inicio, int novoValor) {
 
     node *novoNode = (node*) malloc(sizeof(node));
 
     if (novoNode) {
         novoNode->valor = novoValor;
-        novoNode->proximo = inicio->proximo;
-        inicio->proximo = novoNode;
+        novoNode->proximo = *inicio;
+        *inicio = novoNode;
     }
     else
         printf("Erro ao alocar memoria!\n");
 
 }
 
+void InserirNodeFim(node **inicio, int novoValor) {
+    
+}
+
 int main() {
 
-    node inicio;
+    node *inicio;
 
-    startInsertNode(&inicio, 21);
+    InserirNodeInicio(&inicio, 21);
 
-    printf("valor: %d", inicio.proximo->valor);
+    printf("valor: %d", inicio->valor);
 
     return 0;
 }
