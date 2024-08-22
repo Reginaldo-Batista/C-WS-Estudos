@@ -110,22 +110,26 @@ void inserirNode(node **inicio, unsigned int indice, int novoValor) {
 
 }
 
+void imprimeMenu(node *inicio) {
+    system("cls");
+    printf("Quantidade de nodes: %d\n", quantidadeDeNodes);
+    imprimeNode(inicio);
+
+    printf("\nMenu:\n");
+    printf("1 - Inserir node no inicio\n");
+    printf("2 - Inserir node no fim\n");
+    printf("3 - Inserir node em determinado indice\n");
+    printf("%d - Sair\n", fimMenu);
+    printf("\nSua escolha: ");
+}
+
 int main() {
 
     node *inicio = NULL; // A inicialização do ponteiro 'inicio' com NULL é extremamente necessária!
     int loopMenu, novoValor, indice;
 
     do {
-        system("cls");
-        printf("Quantidade de nodes: %d\n", quantidadeDeNodes);
-        imprimeNode(inicio);
-
-        printf("\nMenu:\n");
-        printf("1 - Inserir node no inicio\n");
-        printf("2 - Inserir node no fim\n");
-        printf("3 - Inserir node em determinado indice\n");
-        printf("%d - Sair\n", fimMenu);
-        printf("\nSua escolha: ");
+        imprimeMenu(inicio);
         scanf("%d", &loopMenu);
 
         switch (loopMenu) {
@@ -153,7 +157,7 @@ int main() {
                 printf("Opcao invalida!\n");
         }
 
-    } while (loopMenu != 4);
+    } while (loopMenu != fimMenu);
 
     return 0;
     
