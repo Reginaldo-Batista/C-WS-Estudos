@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#define fimMenu 4
+#define fimMenu 5
 
 unsigned int quantidadeDeNodes = 0;
 
@@ -110,6 +110,20 @@ void inserirNode(node **inicio, unsigned int indice, int novoValor) {
 
 }
 
+void removerNodeInicio(node **inicio) {
+
+    if (*inicio != NULL) {
+        node *auxNode = *inicio;
+        *inicio = auxNode->proximo;
+        free(auxNode);
+        quantidadeDeNodes--;
+    }
+    else
+        printf("Lista vazia!\n");
+
+}
+
+
 void imprimeMenu(node *inicio) {
     system("cls");
     printf("Quantidade de nodes: %d\n", quantidadeDeNodes);
@@ -119,6 +133,7 @@ void imprimeMenu(node *inicio) {
     printf("1 - Inserir node no inicio\n");
     printf("2 - Inserir node no fim\n");
     printf("3 - Inserir node em determinado indice\n");
+    printf("4 - Remover node no inicio\n");
     printf("%d - Sair\n", fimMenu);
     printf("\nSua escolha: ");
 }
@@ -149,6 +164,9 @@ int main() {
                 printf("Digite o indice desejado: ");
                 scanf("%d", &indice);
                 inserirNode(&inicio, indice, novoValor);
+                break;
+            case 4:
+                removerNodeInicio(&inicio);
                 break;
             case fimMenu:
                 printf("Saindo...\n");
